@@ -38,7 +38,7 @@ contract BidFactory is Ownable {
         return optionBid;
     }
 
-    function createRetainerBid(address _issuerTokenAddress, uint256 _amountWanted) public returns (RetainerBid) {
+    function createRetainerBid(address _issuerTokenAddress, address _issuerControlAddress, uint256 _amountWanted) public returns (RetainerBid) {
         require(marketMakers[msg.sender] == true);
         RetainerBid retainerBid = new RetainerBid(msg.sender, _issuerControlAddress, _issuerTokenAddress, _amountWanted, fee);
         retainerBids.push(retainerBid);
